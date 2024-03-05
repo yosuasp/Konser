@@ -64,4 +64,78 @@ table {
 }
 
 /* Batas */
+header{
+    position: fixed;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
 
+.container {
+    width: 100%;
+    max-width: 1440px;
+    margin: auto;
+}
+
+.nav{
+    display: flex;
+    align-items: center;
+    background-color: var(--container-color);
+    padding: 17px 20px;
+    border-radius: 0.87rem;
+    justify-content: space-between;
+}
+/* Navbar */
+.navbar {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 2rem;
+    column-gap: 1.5rem;
+}
+
+.event-konser {
+    font-size: 1.23rem;
+    font-family: var(--poppins-fonts);
+    text-decoration: none;
+    color: var(--text-alter-color);
+}   
+
+/* Logo */
+.logo {
+    color: var(--text-color);
+    font-size: 2.2rem;
+    font-weight: 700;
+    font-family: var(--font-family-2);
+    text-decoration: none;
+    margin-left: 2rem;
+    padding: 0.2rem 0.2rem 0.2rem 0.2rem;
+    background-color: var(--second-color);
+    border-radius: 0.27rem;
+}   
+
+/* Search Style */
+.search {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 200px;
+}
+
+.search-box, .icon-search {
+    height: 2.4rem;
+    background-color: white;
+    border: none;
+    padding-top: 0.27rem;
+    padding-bottom: 0.27rem;
+    padding-left: 0.27rem;
+}
+
+.icon-search{
+    border-radius: 0.3rem 0 0 0.3rem;
+
+}
+.search-box{
+    width: 27rem;
+    border-radius: 0 0.3rem 0.3rem 0;
+}
