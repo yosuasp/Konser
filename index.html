@@ -6,7 +6,7 @@
     <!-- Icon titile -->
     <link rel="icon" href="img/Logo/stock-photo-cartoon-emoji-hand-holding-microphone-and-showing-victory-gesture-isolated-over-purple-background-2175571409.jpg">
     <!-- CSS Style -->
-    <link rel="stylesheet" href="stye.css">
+    <link rel="stylesheet" href="style.css">
     <title>Local Party Night - Order Now</title>
 </head>
 <body>
@@ -18,15 +18,35 @@
                     <a href="#" class="logo">LocalNight</a>
                     <!-- Search Bar -->
                     <div class="search">
-                        <img class="icon-search" src="img/icon/bx-search.svg" alt="">
+                        <a class="icon-search"  href=""><img src="img/icon/bx-search.svg" alt=""></a>
                         <input class="search-box" type="text" placeholder="Search...">
-                        <div class="filter">
-                        <a href="#" class="event-link">Filter
-                            <!-- pakai ini biar jadi image filter VV  -->
+                        <a class="cone-filter" href="">
+                            <div class="container-cone">
+                                <img  src="img/icon/bx-filter.svg" alt="">
+                                <div class="cone-content">
+                                    <p>Filter By :</p>
+                                    <a href="#">Name</a>
+                                    <a href="#">Location</a>
+                                    <a href="#">Date</a>
+                                </div>
+                            </div>
                         </a>
-                        <img class="icon-filter" src="img/icon/bx-filter-alt.svg" alt="">
                     </div>
+                    <div class="filter">
+                        <div class="dropdown">
+                            <a href="#" class="event-link">Genre</a>
+                            <!-- <img class="icon-filter" src="img/icon/bx-filter-alt.svg" alt=""> -->
+                        
+                            <div class="dropdown-content">
+                                <a href=""><h3>Rap</h3></a>
+                                <a href=""><h3>RnB</h3></a>
+                                <a href=""><h3>Pop</h3></a>
+                                <a href=""><h3>Rock</h3></a>
+                                <a href=""><h3>EDM</h3></a>
+                            </div>
                     </div>
+                </div>
+                    
                 <!-- Account and Balance -->
                     <div class="nav-menu">
                         <a href="#" class="menu-bar cart"><img src="img/icon/bx-cart-alt.svg" alt=""></a>
@@ -36,38 +56,70 @@
         </header>
         <!-- Main Content -->
         <main>
-            <h2>Recomendation Event</h2>
-            <div class="container-slide">
-                <div class="slideContainer">
-                    <button  class="sliderBtn prev">&lt;
-                        <button  class="sliderBtn next">&gt;</button>
-                    </button>
-                    <div class="slide show">
-                      <img src="img/asset/bruno.jpg" alt="slide1" />
-                      <p>Slide No. 1</p>
+            <div class="main container">
+                <div class="main-img">
+                    <img src="img/asset/konser.jpg" alt="">
+                </div>
+                <div class="main-topic">
+                    <h1>Enjoy Your Life With Local Night</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam ut porro, nemo ab doloribus voluptatum voluptatem non deleniti temporibus esse repellat totam. Aperiam accusantium eum repudiandae quaerat voluptatibus a vero!</p>
+                </div>
+            </div>
+
+            <div class="recomend">
+                <div class="recomend-text">
+                    <h2>Recommendation To You</h2>
+                </div>
+                <div class="recomend-container">
+                    <div class="recomend-card">
+                        <img class="img" src="img/asset/bruno.jpg" alt="">
+                        <div class="detail-card">
+                            <div class="location">
+                                <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
+                                <p>15 Maret 2025</p>
+                            </div>
+                            <h3>Bruno Mars Concert in Jakarta</h3>
+                            <p class="status"> Start From</p>
+                                <div class="price-status">
+                                    <p>Rp. 800.000</p>
+                                    <p>Ticket Available</p>
+                                </div>
+                        </div>
                     </div>
-                    <div class="slide">
-                      <img src="img/asset/ed.jpg" alt="slide2" />
-                      <p>Slide No. 2</p>
+                    <div class="recomend-card">
+                        <img class="img" src="img/asset/ed.jpg" alt="">
+                        <div class="detail-card">
+                            <div class="location">
+                                <p><img src="img/icon/bxs-map.svg" alt=""> Bali</p>
+                                <p>27 Desmber 2025</p>
+                            </div>
+                            <h3>Ed Sheeren Concert in Bali</h3>
+                            <p class="status"> Start From</p>
+                                <div class="price-status">
+                                    <p>Rp. 500.000</p>
+                                    <p>Ticket Available</p>
+                                </div>
+                        </div>
                     </div>
-                    <div class="slide">
-                      <img src="img/asset/img1.jpg" alt="slide3" />
-                      <p>Slide No. 3</p>
+                    <div class="recomend-card">
+                        <img class="img" src="img/asset/taylor.jpg" alt="">
+                        <div class="detail-card">
+                            <div class="location">
+                                <p><img src="img/icon/bxs-map.svg" alt="">Singapore</p>
+                                <p>15 Maret 2026</p>
+                            </div>
+                            <h3>Taylor Swift Concert in Singapore</h3>
+                            <p class="status"> Start From</p>
+                                <div class="price-status">
+                                    <p>Rp. 300.000</p>
+                                    <p>Ticket Available</p>
+                                </div>
+                        </div>
                     </div>
-                    <div class="slide">
-                      <img src="img/asset/jkt48.jpg" alt="slide4" />
-                      <p>Slide No. 4</p>
-                    </div>
-                    <div class="slide">
-                      <img src="img/asset/taylor2.jpg" alt="slide5" />
-                      <p>Slide No. 5</p>
-                    </div>
-                  </div>
-            </div>           
+                </div>
+            </div>
+            
         </main>
 
-    </div>
-
-<script src="slide.js"></script>
 </body>
 </html>
