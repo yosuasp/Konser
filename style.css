@@ -44,6 +44,7 @@ header{
    margin-top: 20px;
 }
 
+
 /* Logo */
 .logo {
     color: #e3f2fd;
@@ -265,6 +266,7 @@ main {
     height: 600px;
     object-fit: cover;
     border-radius: .87rem;
+    box-shadow: 5px 5px 3px #505050;
 }
 
 .main-topic h1 {
@@ -306,7 +308,7 @@ main {
     border-radius: .6rem;
     background-color: white;
     box-shadow: 5px 5px 5px #505050;
-    cursor: pointer;
+    text-decoration: none;
 }
 .recomend-card .img {
     width: 420px;
