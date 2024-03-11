@@ -288,9 +288,8 @@ main {
 
 /* Recomandation Items */
 
-.recomend-text {
-    display: flex;
-    justify-content: center;
+.recomend-text h2{
+    text-align: center;
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
@@ -322,6 +321,11 @@ main {
 }
 .recomend-card:hover{
     box-shadow: 5px 5px 5px #bcbcbc; 
+    background-color: rgb(227, 227, 227);
+}
+
+.recomend-card:active .detail-card .location p:nth-child(1),.price-status p:nth-child(1){
+    color: black;
 }
 
 .location {
@@ -338,7 +342,11 @@ main {
 
 .location p:nth-last-child(1){
     margin-right: 15px;
-    color: #42A5F5;
+    color: black;
+}
+
+.location p:nth-child(2) img{
+    margin-right: 5px;
 }
 
 .price-status p:nth-last-child(1){
@@ -352,17 +360,23 @@ main {
     text-align: center;
 }
 
-.status {
-    margin-left: 5px;
-    font-family: var(--poppins-fonts);
-    margin-bottom: 5px;
-    color: rgb(255, 69, 69);
+
+.price-status p:nth-child(1) {
+    margin-left: 8px;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+    color: rgb(84, 84, 84);
+    font-weight: 200;
 }
 
-.price-status p {
-    margin-left: 5px;
-    font-family: var(--poppins-fonts);
-    margin-bottom: 5px;
+.price-status p span{
+    color: black;
+    font-family: var(--font-family3);
+    font-weight: bold;
+}
+
+.price-status p:nth-child(1){
+    font-weight: bold;
 }
 
 .price-status {
@@ -433,8 +447,6 @@ main {
     width: 120px;
     border-radius: 0.3rem;
     padding: 0.2rem;
-    /* padding-left: 0.2rem;
-    padding-right: 0.2rem; */
 }
 
 .ticket-container:hover{
@@ -468,5 +480,87 @@ main {
     color: #e3f2fd;
 }
 
+/* Other Recomendation */
 
 
+.other-con {
+    gap:30px;
+}
+
+.other-text h2{
+    margin-top: 70px;
+}
+
+.other-recomend {
+    width: fit-content;
+
+}
+
+.other-recomend .img{
+    width: 300px;
+}
+
+.other-card h3{
+    margin-top: -3px;
+    text-align: center;
+}
+
+.other-location {
+    display: block;
+}
+
+.other-location p:nth-child(1) {
+    margin-bottom: 5px;
+}
+
+.other-status {
+    color: rgb(84, 84, 84);
+    font-family: sans-serif;
+    margin-bottom: 10px;
+}
+.other-status{
+    margin-left: 8px;
+}
+
+.other-status span{
+    color: black ;
+    font-weight: bold;
+    font-family: var(--font-family3);
+}
+
+.other-2{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.other-3{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.view-more{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.view-more h2{
+    width: 200px;
+    padding: 0.3rem 0 0.3rem 0;
+    border: 3px solid #1976D2;
+    text-align: center;
+    color: black;
+    border-radius: 0.6rem;
+    font-family: sans-serif;
+}
+
+.view-more:hover h2{
+    cursor: pointer;
+    background-color: #1976D2;
+    color: white;
+}
