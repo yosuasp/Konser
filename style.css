@@ -33,6 +33,7 @@ header{
     width: 100%;
     max-width: 1440px;
     position: fixed;
+    
 }
 
 .nav{
@@ -563,4 +564,72 @@ main {
     cursor: pointer;
     background-color: #1976D2;
     color: white;
+}
+
+.footer-container {
+    background-color: #1976D2;
+    margin-top: 50px;
+    padding-top: 30px;
+}
+
+
+.logo-footer {
+    color: #E3F2FD;
+    font-size: 1.8rem;
+    font-weight: 700;
+    font-family: var(--font-family-2);
+    text-decoration: none;
+    text-align: center;
+} 
+
+.logo-footer:hover{
+    color: white;
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+    padding-bottom: 2rem;
+}
+.icon-container img:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.footer-info{
+    display: flex;
+    justify-content: center;
+}
+
+.footer-info ul{
+    display: flex;
+    gap: 40px;
+}
+
+.footer-info ul li h4{
+    font-family: var(--poppins-fonts);
+    font-weight:100;
+    color: #E3F2FD;
+}
+
+.footer-info ul li h4:hover{
+    cursor: pointer;
+}
+
+.footer-info ul li::marker{
+    color:#E3F2FD ;
+}
+
+.footer-info ul li:nth-child(1){
+    list-style-type: none;
+}
+
+.copy-right{
+    font-family: var(--poppins-fonts);
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
 }
