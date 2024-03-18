@@ -627,9 +627,14 @@ main {
 }
 
 .copy-right{
-    font-family: var(--poppins-fonts);
     color: white;
     padding-top: 20px;
     padding-bottom: 20px;
     text-align: center;
+    font-size: 10px;
+}
+
+.copy-right h3{
+    font-weight: 200;
+    font-family: var(--font-family3);
 }
