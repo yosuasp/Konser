@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="img/Logo/stock-photo-cartoon-emoji-hand-holding-microphone-and-showing-victory-gesture-isolated-over-purple-background-2175571409.jpg">
     <title>Concert Details</title>
 </head>
 <body>
@@ -73,22 +74,62 @@
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod turpis quis tincidunt convallis. Nulla facilisi. Ut sollicitudin ultricies eros, et aliquam tortor.</p>
                     </div>
                     <div class="vanue-purches">
-                        <div class="ticket-info">
-                            <div class="ticket-container">
-                                <h2>Buy Now</h2>
-                                <div class="dropdown-ticket">
-                                    <p>VIP | Stock : 30</p>
-                                    <p>VIP | Stock : 30</p>
-                                    <p>VIP | Stock : 30</p>
-                                    <p>VIP | Stock : 30</p>
-                                </div>
+                        <div class="container-ticket">
+                        <div class="ticket-box">
+                            <h2>Buy Now !</h2>
+                            <div class="dropdown-ticket">
+                                <form action="" class="content-ticket">
+                                    <div class="wrapper-ticket">
+                                        <label for="reguler-ticket">Reguler</label>
+                                        <div class="input-stock">
+                                            <input type="number" name="reguler-ticket" placeholder="Masukan jumlah tiket" min="1">
+                                            <h4>Stock : 30</h4>  
+                                        </div> 
+                                    </div>
+                                        <div class="wrapper-ticket">
+                                            <label for="VIP-ticket">VIP</label>
+                                            <div class="input-stock">
+                                                <input type="number" name="vip-ticket" placeholder="Masukan jumlah tiket" min="1">
+                                                <h4>Stock : 30</h4>
+                                            </div> 
+                                        </div>
+                                        <div class="wrapper-ticket">
+                                            <label for="super-vip-ticket">Super - VIP</label>
+                                            <div class="input-stock">
+                                                <input type="number" name="super-vip-ticket" placeholder="Masukan jumlah tiket" min="1">
+                                                <h4>Stock : 30</h4> 
+                                            </div>
+                                        </div>
+                                        <a href="index.html" class="order-link">Pesan Sekarang</a>
+                                </form>
                             </div>
                         </div>
+                    </div>
                         <img src="img/asset/loket_seating_map_raisa_gbk.png" alt="">
                     </div>
                 </div>
         </main>
     </div>
+
+    <footer>
+        <div class="footer-container">
+            <a href="index.html" class="logo-footer"><h2>LocalNight</h2></a>
+            <div class="icon-container">
+                <img src="img/icon/bxl-facebook-circle.svg" alt="">
+                <img src="img/icon/bxl-instagram.svg" alt="">
+                <img src="img/icon/bxl-twitter.svg" alt="">
+                 <img src="img/icon/bxl-linkedin-square.svg" alt="">
+            </div>
+            <div class="footer-info">
+                <ul>
+                    <li><h4>About Us</h4></li>
+                    <li><h4>Terms & Condition</h4></li>
+                    <li><h4>Privacy Policy</h4></li>
+                </ul>
+            </div>
+            <div class="copy-right"><h3>&copy;2024 PT.Local Night. All Right Reserved </h3></div>
+        </div>
+    </footer>
 
 </body>
 </html>
