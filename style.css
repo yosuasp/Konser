@@ -431,7 +431,7 @@ main {
     height: 300px;
     object-fit: contain;
     margin-top:  -2%;
-    margin-left: 55%;
+    margin-left: 30%;
 }
 
 .ticket-info {
@@ -441,45 +441,79 @@ main {
     cursor: pointer;
 }
 
-.ticket-container {
-    position: relative;
-    background-color: #1976D2;
+/* Buy Now */
+
+.ticket-box{
+    display: absolute;
+    margin-top: 100px;
+    margin-left: 60px;
+}
+
+.ticket-box h2{
+    width: auto;
+    font-size: 1.2rem;
+    font-family: var(--poppins-fonts);
+    background-color:#2196F3 ;
+    padding: 10px;
+    border-radius: 10px;
     text-align: center;
-    width: 120px;
-    border-radius: 0.3rem;
-    padding: 0.2rem;
+    position: relative;
+    margin-bottom: 10px;
+    margin-left: -20px;
 }
 
-.ticket-container:hover{
-    border-radius: 0.3rem 0 0 0.3rem;
+
+.content-ticket{
+    display: grid;
+    position: absolute;
+    margin-left: -20px;
+    padding: 1rem;
+    background-color: #2196F3;
+    border-radius: 0 10px 10px;
 }
 
-.ticket-container:hover .dropdown-ticket{
+.wrapper-ticket {
+    margin-bottom: 5px;
+    
+}
+.wrapper-ticket label{
+    font-family: var(--font-family3);
+    font-weight: bold;
+}
+
+.input-stock {
+    display: flex;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.input-stock h4{
+    font-weight: 300;
+    font-family: var(--poppins-fonts);
+}
+
+.ticket-box:hover .dropdown-ticket{
     display: block;
 }
 
-.ticket-container h2 {
-    font-family: var(--poppins-fonts);
-    color: #e3f2fd;
+
+.ticket-box:hover h2 {
+    border-radius: 10px 10px 0 0;
 }
 
 .dropdown-ticket {
     display: none;
-    position: absolute;
-    background-color: #1976D2;
-    width: 120px;
-    padding-left: 0.3rem;
-    margin-top: -120px;
-    margin-left: 117px;
-    border-radius: 0.5rem;
+    margin-top: -10px;
 }
 
-.dropdown-ticket p {    
-    text-align: left;
-    font-size: 15px;
-    font-family: var(--poppins-fonts);
-    color: #e3f2fd;
+.order-link {
+    background-color:#E3F2FD;
+    text-align: center;
+    padding-bottom: 3px;
+    margin-top: 4px;
+    text-decoration: none;
 }
+
 
 /* Other Recomendation */
 
@@ -568,7 +602,7 @@ main {
 
 .footer-container {
     background-color: #1976D2;
-    margin-top: 50px;
+    margin-top: 100px;
     padding-top: 30px;
 }
 
@@ -638,3 +672,138 @@ main {
     font-weight: 200;
     font-family: var(--font-family3);
 }
+
+/* Pemesanan */
+
+.tes-container {
+    margin-top: 170px;
+}
+.wrapper-order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+
+.form-order,.details-order,.img-event {
+    width: fit-content;
+    padding: 0.5rem;
+}
+
+.form-order{
+    margin-left: 3%;
+}
+
+.img-event img{
+    width:420px ;
+    border-radius: 10px;
+    height: 250px;
+    object-fit: cover;
+}
+
+
+.detail-info{
+    display: flex;
+    align-items: center;
+    margin-right: 3%;
+    gap: 3rem;
+    
+}
+.details-order h1{
+    font-family: var(--poppins-fonts);
+    color: #42A5F5;
+}
+
+
+.wrapper-order{
+    border: 1px solid #90CAF9;
+    border-radius: 10px;
+    background-color: #BBDEFB;
+}
+
+.container-order {
+    padding: 0 0.4rem 0 0.4rem;
+    background-color: #1976D2;
+    border-radius: 10px;
+}
+
+.form-order h3{
+    font-family: var(--poppins-fonts);
+    color: whitesmoke;
+}
+
+.order-ticket {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+/* edit pemesanan */
+.order-ticket input{
+    height: 30px;
+    margin-bottom: 10px;
+    border-radius: 0.4rem;
+    text-align: center;
+}
+
+.order-ticket input:focus{
+    outline: none;
+}
+.order-ticket input:focus::placeholder{
+    color: transparent;
+}
+
+.order-ticket label{
+    text-align: center;
+    font-family: var(--font-family3);
+}
+
+.order-ticket input::placeholder,.submit-order{
+    text-align: center;
+    font-family: var(--font-family3);
+   
+}
+
+.submit-order {
+    margin-top: 10px;
+    background-color: #64B5F6;
+    border: none;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+.submit-order:hover{
+    background-color: #2196F3;
+}
+
+
+/* metode pembayaran */
+.wrapper-payment h3,.payment{
+    text-align: center;
+    font-family: var(--font-family3);
+}
+
+.select-payment option{
+    width: 200px;
+    height: 200px;
+}
+
+.container-payment {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.bank img {
+    height: 100px;
+    object-fit: cover;
+    box-shadow: 5px 5px 5px #0D47A1;
+    border-radius: 10px;
+}
+
+.bank img:hover{
+    border: 1px solid #42A5F5;
+    box-shadow: 5px 5px 5px #42A5F5;
+}
+ 
