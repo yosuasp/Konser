@@ -823,15 +823,15 @@ main {
     margin-left: 5%;
 }
 
-.back-to-detail a{
+.back-to-detail a,.back-to-home a{
     text-decoration: none;
 }
 
-.back-to-detail a:visited h1{
+.back-to-detail a:visited h1,.back-to-home a:visited h1{
     color: whitesmoke;
 }
 
-.back-to-detail a h1 {
+.back-to-detail a h1,.back-to-home a h1 {
     font-weight: bold;
     font-size:1.26rem;
     background-color: #42A5F5;
@@ -843,33 +843,8 @@ main {
     border-radius: 10px;
 }
 
-.back-to-detail a h1:hover{
+.back-to-detail a h1:hover,.back-to-home a h1:hover{
     background-color: #1565C0;
     color: whitesmoke;
 }
 
-.back-to-home a h1{
-    font-weight: bold;
-    font-size:1.26rem;
-    background-color: #42A5F5;
-    width: 12rem;
-    text-align: center;
-    font-family: var(--poppins-fonts);
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    border-radius: 10px;
-}
-
-
-.back-to-home a{
-    text-decoration: none;
-}
-
-.back-to-home a:visited h1{
-    color: whitesmoke;
-}
-
-.back-to-home a h1:hover{
-    background-color: #1565C0;
-    color: whitesmoke;
-}
