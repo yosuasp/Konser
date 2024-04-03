@@ -389,13 +389,23 @@ main {
 .konser-img {
     margin-top: -2rem;
 }
+.details h3{
+    margin-top: 10px;
+    margin-bottom: -20px;
+    /* margin-left: 30px; */
+    color: #42A5F5;
+    font-family: var(--poppins-fonts);
+}
 .title-concert h1{
     font-size: 2.5rem;
     font-weight:700;
     font-family: var(--poppins-fonts);
     margin-top: 2rem;
 }
-
+.detail-container{
+    display: flex;
+    gap: 3rem;
+}
 .ul-detail {
     list-style-image: url(img/icon/bx-music.svg);
     margin: 2rem;
