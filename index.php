@@ -1,3 +1,7 @@
+<?php
+include "koneksi.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,6 +129,7 @@
                         <div class="detail-card other-card">
                             <h3>Bruno Mars Concert in Jakarta</h3>
                             <div class="location other-location">
+                                <p class="status-available">Available</p>
                                 <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
                                 <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
                             </div>
@@ -138,6 +143,7 @@
                         <div class="detail-card other-card">
                             <h3>Bruno Mars Concert in Jakarta</h3>
                             <div class="location other-location">
+                                <p class="status-available">Available</p>
                                 <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
                                 <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
                             </div>
@@ -151,6 +157,7 @@
                         <div class="detail-card other-card">
                             <h3>Bruno Mars Concert in Jakarta</h3>
                             <div class="location other-location">
+                                <p class="status-available">Available</p>
                                 <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
                                 <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
                             </div>
@@ -164,6 +171,7 @@
                         <div class="detail-card other-card">
                             <h3>Bruno Mars Concert in Jakarta</h3>
                             <div class="location other-location">
+                                <p class="status-available">Available</p>
                                 <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
                                 <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
                             </div>
@@ -182,6 +190,7 @@
                     <div class="detail-card other-card">
                         <h3>Bruno Mars Concert in Jakarta</h3>
                         <div class="location other-location">
+                            <p class="status-available">Available</p>
                             <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
                             <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
                         </div>
@@ -195,6 +204,7 @@
                     <div class="detail-card other-card">
                         <h3>Bruno Mars Concert in Jakarta</h3>
                         <div class="location other-location">
+                            <p class="status-available">Available</p>
                             <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
                             <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
                         </div>
@@ -208,6 +218,7 @@
                     <div class="detail-card other-card">
                         <h3>Bruno Mars Concert in Jakarta</h3>
                         <div class="location other-location">
+                            <p class="status-available">Available</p>
                             <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
                             <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
                         </div>
@@ -221,6 +232,7 @@
                     <div class="detail-card other-card">
                         <h3>Bruno Mars Concert in Jakarta</h3>
                         <div class="location other-location">
+                            <p class="status-available">Available</p>
                             <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
                             <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
                         </div>
