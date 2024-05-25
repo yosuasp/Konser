@@ -1,3 +1,14 @@
 <?php
-$koneksi = mysqli_connect("localhost","root","","dbkonser") or die("Connection Failed")
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "dbkonser";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 ?>
