@@ -209,6 +209,10 @@ header{
     margin-left: -0.4rem;
 }
 
+.dropdown-content p{
+    padding-top: .2rem;
+}
+
 .dropdown-content a{
     text-decoration: none;
     color: black;
@@ -314,11 +318,16 @@ main {
     background-color: white;
     box-shadow: 5px 5px 5px #505050;
     text-decoration: none;
+    
 }
 .recomend-card .img {
     width: 420px;
     object-fit: cover;
     border-radius: .6rem 0.6rem 0 0;
+}
+
+.imgs{
+    height: 300px;
 }
 .recomend-card:hover{
     box-shadow: 5px 5px 5px #bcbcbc; 
@@ -547,12 +556,15 @@ main {
 }
 
 .other-recomend {
-    width: fit-content;
+    max-width: 300px;
 
 }
 
+
+
 .other-recomend .img{
     width: 300px;
+    height: 200px;
 }
 
 .other-card h3{
@@ -863,4 +875,31 @@ main {
     background-color: #1565C0;
     color: whitesmoke;
 }
+
+
+/* Plus Add */
+
+.sign-in {
+    text-decoration: none;
+    background-color: #90CAF9;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+    text-align: center;
+    color: #e3f2fd;
+    font-family: var(--poppins-fonts);
+    font-size: 17px;
+}
+.sign-in-btn{
+    background-color: #90CAF9;
+    padding: 0.2rem;
+    border-radius: 0.3rem;
+    text-align: center;
+    color: #e3f2fd;
+    font-family: var(--poppins-fonts);
+    font-size: 17px;
+
+}
+
+
+/* Login Layout */
 

@@ -1,23 +1,43 @@
 <?php
-include 'koneksi.php';
-session_start();
+session_start(); // Mulai sesi di awal file
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: index.html");
-    exit();
+include 'koneksi.php';
+
+// Periksa apakah user_id ada di sesi
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Mempersiapkan dan menjalankan statement SQL
+    $sql = "SELECT name FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    $stmt->close();
+} else {
+    $user = null;
 }
 
-$user_id = $_SESSION['user_id'];
-$sql = "SELECT name FROM users WHERE id = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("i", $user_id);
-$stmt->execute();
-$result = $stmt->get_result();
-$user = $result->fetch_assoc();
+$query = "SELECT *, (stock_supervip + stock_vip + stock_reguler)FROM konser ORDER BY (stock_supervip + stock_vip + stock_reguler) DESC LIMIT 3";
+$result = mysqli_query($conn,$query);
+$tampung = [];
+while ($row = mysqli_fetch_assoc($result)) {
+   $tampung[]= $row;
+}
 
-$stmt->close();
+$kueri = "SELECT * FROM konser limit 4";
+$result2 = mysqli_query($conn,$kueri);
+$temp = [];
+while ($row2 = mysqli_fetch_assoc($result2)) {
+    $temp[]= $row2;
+}
+
 $conn->close();
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -66,11 +86,23 @@ $conn->close();
                 <div class="nav-menu">
                     <a href="#" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
                     <div class="dropdown">
-                        <a href="#" class="menu-bar user"><img src="img/icon/bx-user.svg" alt=""></a>
-                        <div class="dropdown-content">
-                            <p>Hello, <?php echo htmlspecialchars($user['name']); ?>!</p>
-                            <a href="logout.php">Logout</a>
-                        </div>
+                        <a href="#" class="menu-bar user">
+                            <?php
+                            if (!isset($_SESSION['user_id'])) {
+                                echo "<div class='sign-in-btn'><a class ='sign-in' href='login.html'>Sign In</a></div>";
+                            } else {
+                                echo "<img src='img/icon/bx-user.svg' alt=''>";
+                            }
+                            ?>
+                        </a>
+                        <?php
+                        if (isset($_SESSION['user_id'])) {
+                            echo "<div class='dropdown-content'>
+                                    <p class='sign-in-btn'>Hello, " . htmlspecialchars($user['name']) . "</p>
+                                    <a href='logout.php'>Logout</a>
+                                  </div>";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -92,170 +124,46 @@ $conn->close();
                     <h2>Recommendation To You</h2>
                 </div>
                 <div class="recomend-container">
-                    <a class="recomend-card" href="detail.html">
-                        <img class="img" src="img/asset/bruno.jpg" alt="">
-                        <div class="detail-card">
-                            <div class="location">
-                                <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
-                                <p><img src="img/icon/bx-calendar.svg" alt="">15 Maret 2025</p>
-                            </div>
-                            <h3>Bruno Mars Concert in Jakarta</h3>
-                                <div class="price-status">
-                                    <p>Start From : <span>Rp 800.000</span></p>
-                                    <p>Ticket Available</p>
+                    <?php foreach ($tampung as $data) { ?>
+                        <a class="recomend-card" href="detail.html">
+                            <img class="img imgs" src="<?php echo $data["gambar_konser"] ?>" alt="">
+                            <div class="detail-card">
+                                <div class="location">
+                                    <p><img src="img/icon/bxs-map.svg" alt=""> <?php echo $data["lokasi"] ?></p>
+                                    <p><img src="img/icon/bx-calendar.svg" alt=""><?php echo $data["waktu_konser"] ?> | <?php echo $data["jam_konser"] ?></p>
                                 </div>
-                        </div>
-                    </a>
-                    <a class="recomend-card" href="detail.html">
-                        <img class="img" src="img/asset/ed.jpg" alt="">
-                        <div class="detail-card">
-                            <div class="location">
-                                <p><img src="img/icon/bxs-map.svg" alt=""> Bali</p>
-                                <p><img src="img/icon/bx-calendar.svg" alt="">27 Desmber 2025</p>
+                                <h3><?php echo $data["nama_konser"] ?></h3>
+                                    <div class="price-status">
+                                        <p>Start From : <span>Rp. <?php echo $data["harga_reguler"] ?></span></p>
+                                        <p>Ticket Available</p>
+                                    </div>
                             </div>
-                            <h3>Ed Sheeren Concert in Bali</h3>
-                                <div class="price-status">
-                                    <p>Start From <span>Rp: 500.000</span></p>
-                                    <p>Ticket Available</p>
-                                </div>
-                        </div>
-                    </a>
-                    <a class="recomend-card" href="detail.html">
-                        <img class="img" src="img/asset/taylor.jpg" alt="">
-                        <div class="detail-card">
-                            <div class="location">
-                                <p><img src="img/icon/bxs-map.svg" alt="">Singapore</p>
-                                <p><img src="img/icon/bx-calendar.svg" alt="">15 Maret 2026</p>
-                            </div>
-                            <h3>Taylor Swift Concert in Singapore</h3>
-                                <div class="price-status">
-                                    <p>Start From : <span>Rp 300.000</span></p>
-                                    <p>Ticket Available</p>
-                                </div>
-                        </div>
-                    </a>
+                        </a>
+                    <?php } ?>
+                    
                 </div>
             </div>
             <!-- Other -->
             <div class="recomend-text other-text"><h2>Another Event Coming Soon</h2></div>
-            <div class="recomend other">
-                <div class="container other-con">
-                    <div class="recomend-container other-container">
-                        <a class="recomend-card other-recomend" href="detail.html">
-                            <img class="img" src="img/asset/bruno.jpg" alt="">
-                            <div class="detail-card other-card">
-                                <h3>Bruno Mars Concert in Jakarta</h3>
-                                <div class="location other-location">
-                                    <p class="status-available">Available</p>
-                                    <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
-                                    <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
-                                </div>
-                                <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="recomend-container other-container">
-                        <a class="recomend-card other-recomend" href="detail.html">
-                            <img class="img" src="img/asset/bruno.jpg" alt="">
-                            <div class="detail-card other-card">
-                                <h3>Bruno Mars Concert in Jakarta</h3>
-                                <div class="location other-location">
-                                    <p class="status-available">Available</p>
-                                    <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
-                                    <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
-                                </div>
-                                <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="recomend-container other-container">
-                        <a class="recomend-card other-recomend" href="detail.html">
-                            <img class="img" src="img/asset/bruno.jpg" alt="">
-                            <div class="detail-card other-card">
-                                <h3>Bruno Mars Concert in Jakarta</h3>
-                                <div class="location other-location">
-                                    <p class="status-available">Available</p>
-                                    <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
-                                    <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
-                                </div>
-                                <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="recomend-container other-container">
-                        <a class="recomend-card other-recomend" href="detail.html">
-                            <img class="img" src="img/asset/bruno.jpg" alt="">
-                            <div class="detail-card other-card">
-                                <h3>Bruno Mars Concert in Jakarta</h3>
-                                <div class="location other-location">
-                                    <p class="status-available">Available</p>
-                                    <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
-                                    <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
-                                </div>
-                                <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
-                            </div>
-                        </a>
-                    </div> 
-                </div>
-            </div>
-
             <div class="recomend other-2">
                 <div class="recomend-container other-container">
-                    <a class="recomend-card other-recomend" href="detail.html">
-                        <img class="img" src="img/asset/bruno.jpg" alt="">
+                    <?php  foreach ($temp as $datas) { ?>
+                        <a class="recomend-card other-recomend" href="detail.html">
+                        <img class="img images" src="<?php  echo $datas["gambar_konser"] ?>" alt="">
                         <div class="detail-card other-card">
-                            <h3>Bruno Mars Concert in Jakarta</h3>
+                            <h3><?php  echo $datas["nama_konser"] ?></h3>
                             <div class="location other-location">
                                 <p class="status-available">Available</p>
-                                <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
-                                <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
+                                <p><img src="img/icon/bxs-map.svg" alt=""><?php  echo $datas["lokasi"] ?></p>
+                                <p><img src="img/icon/bx-calendar.svg" alt=""><?php  echo $datas["waktu_konser"] ?> | <?php  echo $datas["jam_konser"] ?></p>
                             </div>
                             <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
                         </div>
                     </a>
+                    <?php }?>    
                 </div>
-                <div class="recomend-container other-container">
-                    <a class="recomend-card other-recomend" href="detail.html">
-                        <img class="img" src="img/asset/bruno.jpg" alt="">
-                        <div class="detail-card other-card">
-                            <h3>Bruno Mars Concert in Jakarta</h3>
-                            <div class="location other-location">
-                                <p class="status-available">Available</p>
-                                <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
-                                <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
-                            </div>
-                            <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
-                        </div>
-                    </a>
-                </div>
-                <div class="recomend-container other-container">
-                    <a class="recomend-card other-recomend" href="detail.html">
-                        <img class="img" src="img/asset/bruno.jpg" alt="">
-                        <div class="detail-card other-card">
-                            <h3>Bruno Mars Concert in Jakarta</h3>
-                            <div class="location other-location">
-                                <p class="status-available">Available</p>
-                                <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
-                                <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
-                            </div>
-                            <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
-                        </div>
-                    </a>
-                </div>
-                <div class="recomend-container other-container">
-                    <a class="recomend-card other-recomend" href="detail.html">
-                        <img class="img" src="img/asset/bruno.jpg" alt="">
-                        <div class="detail-card other-card">
-                            <h3>Bruno Mars Concert in Jakarta</h3>
-                            <div class="location other-location">
-                                <p class="status-available">Available</p>
-                                <p><img src="img/icon/bxs-map.svg" alt=""> Jakarta</p>
-                                <p><img src="img/icon/bx-calendar.svg" alt="">15/04/2025 17.00 WIB</p>
-                            </div>
-                            <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
-                        </div>
-                    </a>
-                </div>
+                
+                
             </div>
 
             <!-- View More -->
