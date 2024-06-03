@@ -512,6 +512,13 @@ main {
     margin-top: 5px;
 }
 
+.input-stock input[type=number]{
+    width: 160px;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+}
+
 .input-stock h4{
     font-weight: 300;
     font-family: var(--poppins-fonts);
@@ -519,6 +526,7 @@ main {
 
 .ticket-box:hover .dropdown-ticket{
     display: block;
+    background-color: red;
 }
 
 
@@ -537,10 +545,15 @@ main {
     padding-bottom: 3px;
     margin-top: 4px;
     text-decoration: none;
+    border: none;
+    height: 30px;
+    border-radius: 20px;
 }
 
-.order-link:visited{
-    color: black;
+.order-link:hover{
+    background-color:#6cb5ff;
+    border: 1px solid black;
+    cursor: pointer;
 }
 
 

@@ -125,7 +125,7 @@ $conn->close();
                 </div>
                 <div class="recomend-container">
                     <?php foreach ($tampung as $data) { ?>
-                        <a class="recomend-card" href="detail.html">
+                        <a class="recomend-card" href="detail.php?id=<?php echo $data['id']?>">
                             <img class="img imgs" src="<?php echo $data["gambar_konser"] ?>" alt="">
                             <div class="detail-card">
                                 <div class="location">
@@ -148,7 +148,7 @@ $conn->close();
             <div class="recomend other-2">
                 <div class="recomend-container other-container">
                     <?php  foreach ($temp as $datas) { ?>
-                        <a class="recomend-card other-recomend" href="detail.html">
+                        <a class="recomend-card other-recomend" href="detail.php?id=<?php echo $datas['id']?>">
                         <img class="img images" src="<?php  echo $datas["gambar_konser"] ?>" alt="">
                         <div class="detail-card other-card">
                             <h3><?php  echo $datas["nama_konser"] ?></h3>
