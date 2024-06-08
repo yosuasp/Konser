@@ -310,6 +310,7 @@ main {
     display: flex;
     gap: 2rem;
     justify-content: center;
+
 }
 
 .recomend-card{
@@ -560,6 +561,12 @@ main {
 /* Other Recomendation */
 
 
+.other-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .other-con {
     gap:30px;
 }
@@ -784,11 +791,12 @@ main {
     width: 300px;
 }
 /* edit pemesanan */
-.order-ticket input{
+.order-ticket input {
     height: 30px;
     margin-bottom: 10px;
     border-radius: 0.4rem;
     text-align: center;
+    /* width: 100px; */
 }
 
 .order-ticket input:focus{

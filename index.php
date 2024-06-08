@@ -21,17 +21,17 @@ if (isset($_SESSION['user_id'])) {
 }
 
 $query = "SELECT *, (stock_supervip + stock_vip + stock_reguler)FROM konser ORDER BY (stock_supervip + stock_vip + stock_reguler) DESC LIMIT 3";
-$result = mysqli_query($conn,$query);
+$result = mysqli_query($conn, $query);
 $tampung = [];
 while ($row = mysqli_fetch_assoc($result)) {
-   $tampung[]= $row;
+    $tampung[] = $row;
 }
 
-$kueri = "SELECT * FROM konser limit 4";
-$result2 = mysqli_query($conn,$kueri);
+$kueri = "SELECT * FROM konser ";
+$result2 = mysqli_query($conn, $kueri);
 $temp = [];
 while ($row2 = mysqli_fetch_assoc($result2)) {
-    $temp[]= $row2;
+    $temp[] = $row2;
 }
 
 $conn->close();
@@ -84,7 +84,7 @@ $conn->close();
                 </div>
                 <!-- Account and Balance -->
                 <div class="nav-menu">
-                    <a href="#" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
+                    <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
                     <div class="dropdown">
                         <a href="#" class="menu-bar user">
                             <?php

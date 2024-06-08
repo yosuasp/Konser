@@ -1,5 +1,7 @@
 <?php
-include "koneksi.php";
+session_start(); // Mulai sesi di awal file
+
+include 'koneksi.php';
 
 if (isset($_GET['id'])) {
     $konser_id = $_GET['id'];
@@ -19,6 +21,25 @@ if (isset($_GET['id'])) {
     echo "ID konser tidak ditemukan.";
     exit();
 }
+
+if (isset($_SESSION['user_id'])) {
+    $user_id = $_SESSION['user_id'];
+
+    // Mempersiapkan dan menjalankan statement SQL
+    $sql = "SELECT name FROM users WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
+
+    $stmt->close();
+} else {
+    $user = null;
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +88,26 @@ if (isset($_GET['id'])) {
             <!-- Account and Balance -->
             <div class="nav-menu">
                 <a href="#" class="menu-bar cart"><img src="img/icon/bx-cart-alt.svg" alt=""></a>
-                <a href="#" class="menu-bar user"><img src="img/icon/bx-user.svg" alt=""></a>
+                <!-- <a href="#" class="menu-bar user"><img src="img/icon/bx-user.svg" alt=""></a> -->
+                <div class="dropdown">
+                        <a href="#" class="menu-bar user">
+                            <?php
+                            if (!isset($_SESSION['user_id'])) {
+                                echo "<div class='sign-in-btn'><a class ='sign-in' href='login.html'>Sign In</a></div>";
+                            } else {
+                                echo "<img src='img/icon/bx-user.svg' alt=''>";
+                            }
+                            ?>
+                        </a>
+                        <?php
+                        if (isset($_SESSION['user_id'])) {
+                            echo "<div class='dropdown-content'>
+                                    <p class='sign-in-btn'>Hello, " . htmlspecialchars($user['name']) . "</p>
+                                    <a href='logout.php'>Logout</a>
+                                  </div>";
+                        }
+                        ?>
+                    </div>
             </div>
         </div>
     </header>
@@ -110,9 +150,15 @@ if (isset($_GET['id'])) {
                             <div class="dropdown-ticket">
                                 <form action="order_page.php" method="post" class="content-ticket">
                                     <input type="hidden" name="konser_id" value="<?php echo $detail_konser['id']?>">
+                                    <input type="hidden" name="konser_name" value="<?php echo $detail_konser['nama_konser']; ?>">
+                                    <input type="hidden" name="konser_date" value="<?php echo $detail_konser['waktu_konser']; ?>">
+                                    <input type="hidden" name="konser_location" value="<?php echo $detail_konser['lokasi']; ?>">
                                     <div class="wrapper-ticket">
                                         <label for="reguler-ticket">Reguler</label>
                                         <div class="input-stock">
+                                            <input type="hidden" value="<?php echo  $detail_konser['harga_reguler']; ?>" name="harga-reguler-ticket">
+                                            <input type="hidden" value="<?php echo $detail_konser['harga_vip'];?>" name="harga-vip_ticket">
+                                            <input type="hidden" value="<?php echo $detail_konser['harga_supervip'];?>" name="harga-supervip-ticket">
                                             <input type="number" name="reguler-ticket" placeholder="Masukan jumlah tiket" min="1" max="<?php echo $detail_konser['stock_reguler'];?>">
                                             <h4>Stock : <?php echo $detail_konser['stock_reguler']; ?></h4>
                                         </div>
@@ -132,7 +178,7 @@ if (isset($_GET['id'])) {
                                         </div>
                                     </div>
                                     <input type="submit" value="Pesan" class="order-link">
-                                    <!-- <a href="pemesanan.html" class="order-link">Pesan Sekarang</a> -->
+                                    
                                 </form>
                             </div>
                         </div>
