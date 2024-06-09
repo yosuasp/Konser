@@ -1,13 +1,13 @@
 <?php
-session_start(); // Mulai sesi di awal file
+session_start(); // Start the session at the beginning of the file
 
 include 'koneksi.php';
 
-// Periksa apakah user_id ada di sesi
+// Check if user_id exists in the session
 if (isset($_SESSION['user_id'])) {
     $user_id = $_SESSION['user_id'];
 
-    // Mempersiapkan dan menjalankan statement SQL
+    // Prepare and execute SQL statement
     $sql = "SELECT name FROM users WHERE id = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $user_id);
@@ -20,14 +20,55 @@ if (isset($_SESSION['user_id'])) {
     $user = null;
 }
 
-$query = "SELECT *, (stock_supervip + stock_vip + stock_reguler)FROM konser ORDER BY (stock_supervip + stock_vip + stock_reguler) DESC LIMIT 3";
-$result = mysqli_query($conn, $query);
-$tampung = [];
-while ($row = mysqli_fetch_assoc($result)) {
-    $tampung[] = $row;
+// Initialize variables
+$filter_by = '';
+$search_query = '';
+
+// Check if search query and filter are set
+if (isset($_GET['search_query']) && isset($_GET['filter_by'])) {
+    $search_query = $_GET['search_query'];
+    $filter_by = $_GET['filter_by'];
 }
 
-$kueri = "SELECT * FROM konser ";
+// Default query to fetch concerts
+$query = "SELECT *, (stock_supervip + stock_vip + stock_reguler) as total_stock FROM konser ORDER BY total_stock DESC LIMIT 3";
+
+// Modify query based on filter
+if ($search_query !== '' && $filter_by !== '') {
+    switch ($filter_by) {
+        case 'name':
+            $query = "SELECT * FROM konser WHERE nama_konser LIKE ?";
+            break;
+        case 'location':
+            $query = "SELECT * FROM konser WHERE lokasi LIKE ?";
+            break;
+        case 'date':
+            $query = "SELECT * FROM konser WHERE waktu_konser = ?";
+            break;
+    }
+}
+
+// Preparing the statement for the search query
+$stmt = $conn->prepare($query);
+
+if ($search_query !== '' && $filter_by !== '') {
+    if ($filter_by === 'date') {
+        $stmt->bind_param("s", $search_query);
+    } else {
+        $search_query = "%" . $search_query . "%";
+        $stmt->bind_param("s", $search_query);
+    }
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+$tampung = [];
+while ($row = $result->fetch_assoc()) {
+    $tampung[] = $row;
+}
+$stmt->close();
+
+$kueri = "SELECT * FROM konser";
 $result2 = mysqli_query($conn, $kueri);
 $temp = [];
 while ($row2 = mysqli_fetch_assoc($result2)) {
@@ -36,8 +77,6 @@ while ($row2 = mysqli_fetch_assoc($result2)) {
 
 $conn->close();
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,19 +95,17 @@ $conn->close();
                 <a href="index.html" class="logo">LocalNight</a>
                 <!-- Search Bar -->
                 <div class="search">
-                    <a class="icon-search" href="#"><img src="img/icon/bx-search.svg" alt=""></a>
-                    <input class="search-box" type="text" placeholder="Search...">
-                    <a class="cone-filter" href="#">
-                        <div class="container-cone">
-                            <img src="img/icon/bx-filter.svg" alt="">
-                            <div class="cone-content">
-                                <p>Filter By :</p>
-                                <a href="#">Name</a>
-                                <a href="#">Location</a>
-                                <a href="#">Date</a>
-                            </div>
-                        </div>
-                    </a>
+                    <form method="GET" action="index.php">
+                        <input class="search-box" type="text" name="search_query" placeholder="Search...">
+                        <select name="filter_by">
+                            <option value="name">Name</option>
+                            <option value="location">Location</option>
+                            <option value="date">Date</option>
+                        </select>
+                        <button type="submit" class="icon-search">
+                            <img src="img/icon/bx-search.svg" alt="">
+                        </button>
+                    </form>
                 </div>
                 <div class="filter">
                     <div class="dropdown">
@@ -84,7 +121,7 @@ $conn->close();
                 </div>
                 <!-- Account and Balance -->
                 <div class="nav-menu">
-                    <a href="list_tickets.php   " class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
+                    <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
                     <div class="dropdown">
                         <a href="#" class="menu-bar user">
                             <?php
@@ -140,7 +177,6 @@ $conn->close();
                             </div>
                         </a>
                     <?php } ?>
-                    
                 </div>
             </div>
             <!-- Other -->
@@ -157,23 +193,15 @@ $conn->close();
                                 <p><img src="img/icon/bxs-map.svg" alt=""><?php  echo $datas["lokasi"] ?></p>
                                 <p><img src="img/icon/bx-calendar.svg" alt=""><?php  echo $datas["waktu_konser"] ?> | <?php  echo $datas["jam_konser"] ?></p>
                             </div>
-                            <p class="status other-status"> Start From : <span>Rp 80.000</span></p>
                         </div>
-                    </a>
-                    <?php }?>    
+                        </a>
+                    <?php } ?>
                 </div>
-                
-                
             </div>
-
-            <!-- View More -->
-            <div class="view-more">
-                <h2>View More</h2>
-            </div>     
         </main>
     </div>
-    <!-- Footer -->
-    <footer>
+     <!-- Footer -->
+     <footer>
         <div class="footer-container">
             <a href="index.html" class="logo-footer"><h2>LocalNight</h2></a>
             <div class="icon-container">
