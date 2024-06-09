@@ -54,42 +54,12 @@ if (isset($_SESSION['user_id'])) {
 
 <div class="container">
     <header>
-        <div class="nav">
-            <a href="index.php" class="logo">LocalNight</a>
-            <!-- Search Bar -->
-            <div class="search">
-                <a class="icon-search" href=""><img src="img/icon/bx-search.svg" alt=""></a>
-                <input class="search-box" type="text" placeholder="Search...">
-                <a class="cone-filter" href="">
-                    <div class="container-cone">
-                        <img src="img/icon/bx-filter.svg" alt="">
-                        <div class="cone-content">
-                            <p>Filter By :</p>
-                            <a href="#">Name</a>
-                            <a href="#">Location</a>
-                            <a href="#">Date</a>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="filter">
-                <div class="dropdown">
-                    <a href="#" class="event-link">Genre</a>
-                    <div class="dropdown-content">
-                        <a href=""><h3>Rap</h3></a>
-                        <a href=""><h3>RnB</h3></a>
-                        <a href=""><h3>Pop</h3></a>
-                        <a href=""><h3>Rock</h3></a>
-                        <a href=""><h3>EDM</h3></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Account and Balance -->
-            <div class="nav-menu">
-                <a href="#" class="menu-bar cart"><img src="img/icon/bx-cart-alt.svg" alt=""></a>
-                <!-- <a href="#" class="menu-bar user"><img src="img/icon/bx-user.svg" alt=""></a> -->
-                <div class="dropdown">
+            <div class="nav">
+                <a href="index.php" class="logo">LocalNight</a>
+                <!-- Account and Balance -->
+                <div class="nav-menu">
+                    <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
+                    <div class="dropdown">
                         <a href="#" class="menu-bar user">
                             <?php
                             if (!isset($_SESSION['user_id'])) {
@@ -101,15 +71,22 @@ if (isset($_SESSION['user_id'])) {
                         </a>
                         <?php
                         if (isset($_SESSION['user_id'])) {
-                            echo "<div class='dropdown-content'>
-                                    <p class='sign-in-btn'>Hello, " . htmlspecialchars($user['name']) . "</p>
-                                    <a href='logout.php'>Logout</a>
-                                  </div>";
+                            $user_id = $_SESSION['user_id'];
+                            $query_user = "SELECT name FROM users WHERE id = $user_id";
+                            $result_user = mysqli_query($conn, $query_user);
+
+                            if ($result_user) {
+                                $user = mysqli_fetch_assoc($result_user);
+                                echo "<div class='dropdown-content'>
+                                        <p class='sign-in-btn'>Hello, " . htmlspecialchars($user['name']) . "</p>
+                                        <a href='logout.php'>Logout</a>
+                                      </div>";
+                            }
                         }
                         ?>
                     </div>
+                </div>
             </div>
-        </div>
     </header>
 
     <main>

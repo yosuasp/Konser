@@ -3,7 +3,7 @@ session_start();
 include "koneksi.php";
 
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.html');
+    echo "Anda Harus Login ";
 }
 
 $user_id = $_SESSION['user_id'];
@@ -11,10 +11,16 @@ $user_id = $_SESSION['user_id'];
 $pesan_reguler = $_POST['reguler-ticket'];
 $pesan_vip  = $_POST['vip-ticket'];
 $pesan_super_vip = $_POST['super-vip-ticket'];
-$harga_reguler = $_POST['harga-reguler-ticket']*$pesan_reguler;
-$harga_vip = (int)$_POST['harga-vip_ticket']*(int)$pesan_vip;
-$harga_super_vip = (int)$_POST['harga-supervip-ticket']*(int)$pesan_super_vip;
-$total = $harga_reguler+$harga_super_vip+$harga_vip;
+if ($pesan_reguler === '' && $pesan_vip === '' && $pesan_super_vip === '') {
+    $konser_id = $_POST['konser_id'];
+    echo "<script>alert('Please fill all the fields');</script>";
+    echo "<script>window.location.href='detail.php?id=$konser_id';</script>";
+} else {
+    $harga_reguler = (int)$_POST['harga-reguler-ticket'] * (int)$pesan_reguler;
+    $harga_vip = (int)$_POST['harga-vip_ticket'] * (int)$pesan_vip;
+    $harga_super_vip = (int)$_POST['harga-supervip-ticket'] * (int)$pesan_super_vip;
+    $total = $harga_reguler + $harga_super_vip + $harga_vip;
+}
 
 ?>
 
@@ -29,12 +35,12 @@ $total = $harga_reguler+$harga_super_vip+$harga_vip;
 </head>
 <body>
 <div class="container">
-<header>
+    <header>
             <div class="nav">
                 <a href="index.php" class="logo">LocalNight</a>
                 <!-- Account and Balance -->
                 <div class="nav-menu">
-                    <a href="#" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
+                    <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
                     <div class="dropdown">
                         <a href="#" class="menu-bar user">
                             <?php
@@ -63,7 +69,7 @@ $total = $harga_reguler+$harga_super_vip+$harga_vip;
                     </div>
                 </div>
             </div>
-        </header>
+    </header>
 
     <main class="main-container">
         <div class="tes-container">
@@ -82,7 +88,6 @@ $total = $harga_reguler+$harga_super_vip+$harga_vip;
 
                     $query_detail = "SELECT * FROM konser WHERE id = $konser_id";
                     $result_detail = mysqli_query($conn, $query_detail);
-
                     if ($result_detail) {
                         $detail_konser = mysqli_fetch_assoc($result_detail);
                     } else {
@@ -152,7 +157,7 @@ $total = $harga_reguler+$harga_super_vip+$harga_vip;
                 <a href="detail.php?id=<?php echo $konser_id; ?>"><h1>&#60; Back To Details</h1></a>
             </div>
             <div class="wrapper-payment">
-                <h3>Pilih Metode Pembayaran</h3>
+                <h3>Metode Pembayaran Yang Tersedia </h3>
                 <div class="container-payment">
                     <div class="bank bri"><img src="img/asset/bri2.jpg" alt="" class="pay"></div>
                     <div class="bank bca"><img src="img/asset/bca3.jpg" alt="" class="pay"></div>

@@ -84,7 +84,7 @@ $conn->close();
                 </div>
                 <!-- Account and Balance -->
                 <div class="nav-menu">
-                    <a href="list_tickets.php" class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
+                    <a href="list_tickets.php   " class="menu-bar cart"><img src="img/icon/bx-cart-alt-white.svg" alt=""></a>
                     <div class="dropdown">
                         <a href="#" class="menu-bar user">
                             <?php

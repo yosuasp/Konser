@@ -922,5 +922,132 @@ main {
 }
 
 
-/* Login Layout */
+/* Ticket List */
 
+
+.tes-container h2{
+    text-align: center;
+}
+
+.ticket-form {
+    display: flex;
+    align-items: center;
+}
+
+.card-ticket{
+    border: 1px solid #505050;
+    width: 400px;
+    background-color: #BBDEFB;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+
+.card-ticket h3{
+    margin-top: 10px;
+}
+.card-ticket h4:nth-child(5){
+    margin-bottom: 10px;
+}
+
+.card-ticket p {
+    color: black;
+}
+.card-ticket h3,.card-ticket h4{
+    color: #0d47a1;
+}
+
+.card-ticket h3,.card-ticket h4,.card-ticket p{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-family: var(--poppins-fonts);
+}
+.tombol {
+    display: flex;
+    justify-content:space-evenly;
+    margin-bottom: 10px;
+}
+.edit-button {
+    background-color: #4CAF50;
+    border: 1px solid #505050;
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+}
+
+.delete-button{
+    background-color: #FF0000;
+    border: 1px solid #505050;
+    color: white;
+    border-radius: 10px;
+    font-weight:bold;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    text-align: center;
+}
+
+.tes-container h2{
+    text-align: center;
+    font-family: var(--poppins-fonts);
+    margin-bottom: 20px;
+}
+
+.container-ticket-order{
+    justify-content: space-evenly;
+    column-gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Edit Form */
+
+
+.edit-ticket {
+    padding: 10px;
+    border: 1px solid #505050;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+.container-edit {
+    display: flex;
+    justify-content: center;
+}
+
+
+.simpan {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    background-color: #4CAF50;
+    border: 1px solid #505050;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    /* width: 150px; */
+    height: 30px;
+    font-family: var(--poppins-fonts);
+}
+.batal{
+    background-color: #FF0000;
+    border: 1px solid #505050;
+    color: white;
+    font-size: small;
+    font-family: var(--poppins-fonts);
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    height: 30px;
+    padding: 5px;
+    margin-top:-10px ;
+    position: absolute;
+    text-decoration: none;
+    margin-left:150px;
+}
